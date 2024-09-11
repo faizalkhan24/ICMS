@@ -17,7 +17,6 @@ const prayerRoutes = require('./routes/prayerRoutes');
 const eventMasjidRoutes = require('./routes/eventMasjidRoutes');
 const islamicEventRoutes = require('./routes/islamicEventRoutes');
 const reminderRoutes = require('./routes/reminderRoutes');
-const errorMiddleware = require('./middleware/errorMiddleware');
 const visitorRoutes = require('./routes/visitorRoutes');
 const ritualsOfferingsRoutes = require('./routes/ritualsOfferingsRoutes');
 const assetRoutes = require('./routes/assetRoutes');
@@ -29,15 +28,15 @@ const messageRoutes = require('./routes/messageRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
 const financialReportRoutes = require('./routes/financialReportRoutes');
 const complianceRoutes = require('./routes/complianceRoutes');
-
-// Import middleware
 const errorMiddleware = require('./middleware/errorMiddleware');
+// const setupSwagger = require('./config/swagger'); // Import Swagger setup
 
 const app = express();
 
 app.use(bodyParser.json());
 
-// Use routes
+// setupSwagger(app);
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/students', studentRoutes);
@@ -50,22 +49,21 @@ app.use('/api/donations', donationRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/prayers', prayerRoutes);
-app.use('/api/events', eventMasjidRoutes);
+app.use('/api/masjid-events', eventMasjidRoutes);
 app.use('/api/islamic-events', islamicEventRoutes);
-app.use('/api/reminders', reminderRoutes);
-app.use('/api/visitor', visitorRoutes);
-app.use('/api/ritualsOfferings', ritualsOfferingsRoutes);
-app.use('/api/asset', assetRoutes);
-app.use('/api', discussionRoutes);
-app.use('/api', commentRoutes);
-app.use('/api', announcementRoutes);
-app.use('/api', newsletterRoutes);
-app.use('/api', messageRoutes);
-app.use('/api', expenseRoutes);
-app.use('/api', financialReportRoutes);
-app.use('/api', complianceRoutes);
+// app.use('/api/reminders', reminderRoutes);
+app.use('/api/visitors', visitorRoutes);
+app.use('/api/rituals-offerings', ritualsOfferingsRoutes);
+app.use('/api/assets', assetRoutes);
+app.use('/api/discussion', discussionRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/api/announcements', announcementRoutes);
+app.use('/api/newsletters', newsletterRoutes);
+app.use('/api/messages', messageRoutes);
+app.use('/api/expenses', expenseRoutes);
+app.use('/api/financial-reports', financialReportRoutes);
+app.use('/api/compliance', complianceRoutes);
 
-// Use error middleware
 app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;

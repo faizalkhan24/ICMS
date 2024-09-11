@@ -15,17 +15,17 @@ const findUserById = async (id) => {
   return rows[0];
 };
 
-const updateUser = async (id, name, email, password, role) => {
+const updateUsers = async (id, name, email, password, role) => {
   const [result] = await db.query('UPDATE users SET name = ?, email = ?, password = ?, role = ? WHERE id = ?', [name, email, password, role, id]);
   return result.affectedRows;
 };
 
-const deleteUser = async (id) => {
+const deleteUsers = async (id) => {
   const [result] = await db.query('DELETE FROM users WHERE id = ?', [id]);
   return result.affectedRows;
 };
 
-const getAllUsers = async () => {
+const getAllUser = async () => {
   const [rows] = await db.query('SELECT id, name, email, role FROM users');
   return rows;
 };
@@ -34,7 +34,7 @@ module.exports = {
   createUser,
   findUserByEmail,
   findUserById,
-  updateUser,
-  deleteUser,
-  getAllUsers,
+  updateUsers,
+  deleteUsers,
+  getAllUser,
 };

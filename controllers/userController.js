@@ -1,8 +1,8 @@
 const {
   findUserById,
-  updateUser,
-  deleteUser,
-  getAllUsers,
+  updateUsers,
+  deleteUsers,
+  getAllUser,
 } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 
@@ -28,7 +28,7 @@ const updateUserProfile = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await getAllUsers();
+    const users = await getAllUser();
     res.json(users);
   } catch (err) {
     res.status(500).json(err);
@@ -47,7 +47,7 @@ const getUserById = async (req, res) => {
 const updateUser = async (req, res) => {
   const { name, email, role } = req.body;
   try {
-    await updateUser(req.params.id, name, email, null, role);
+    await updateUsers(req.params.id, name, email, null, role);
     res.send("User details updated");
   } catch (err) {
     res.status(500).json(err);
@@ -56,7 +56,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    await deleteUser(req.params.id);
+    await deleteUsers(req.params.id);
     res.send("User deleted");
   } catch (err) {
     res.status(500).json(err);
