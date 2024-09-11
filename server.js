@@ -13,6 +13,19 @@ const distributionRoutes = require('./routes/distributionRoutes');
 const donationRoutes = require('./routes/donationRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const reportRoutes = require('./routes/reportRoutes');
+const prayerRoutes = require('./routes/prayerRoutes');
+const eventMasjidRoutes = require('./routes/eventMasjidRoutes');
+const islamicEventRoutes = require('./routes/islamicEventRoutes');
+const reminderRoutes = require('./routes/reminderRoutes');
+const errorMiddleware = require('./middleware/errorMiddleware');
+const visitorRoutes = require('./routes/visitorRoutes');
+const ritualsOfferingsRoutes = require('./routes/ritualsOfferingsRoutes');
+const assetRoutes = require('./routes/assetRoutes');
+const discussionRoutes = require('./routes/discussionRoutes');
+const commentRoutes = require('./routes/commentRoutes');
+const announcementRoutes = require('./routes/announcementRoutes');
+const newsletterRoutes = require('./routes/newsletterRoutes');
+const messageRoutes = require('./routes/messageRoutes');
 
 // Import middleware
 const errorMiddleware = require('./middleware/errorMiddleware');
@@ -33,6 +46,18 @@ app.use('/api/distributions', distributionRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/prayers', prayerRoutes);
+app.use('/api/events', eventMasjidRoutes);
+app.use('/api/islamic-events', islamicEventRoutes);
+app.use('/api/reminders', reminderRoutes);
+app.use('/api/visitor', visitorRoutes);
+app.use('/api/ritualsOfferings', ritualsOfferingsRoutes);
+app.use('/api/asset', assetRoutes);
+app.use('/api', discussionRoutes);
+app.use('/api', commentRoutes);
+app.use('/api', announcementRoutes);
+app.use('/api', newsletterRoutes);
+app.use('/api', messageRoutes);
 
 // Use error middleware
 app.use(errorMiddleware);
