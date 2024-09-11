@@ -26,6 +26,9 @@ const commentRoutes = require('./routes/commentRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
 const newsletterRoutes = require('./routes/newsletterRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
+const financialReportRoutes = require('./routes/financialReportRoutes');
+const complianceRoutes = require('./routes/complianceRoutes');
 
 // Import middleware
 const errorMiddleware = require('./middleware/errorMiddleware');
@@ -58,6 +61,9 @@ app.use('/api', commentRoutes);
 app.use('/api', announcementRoutes);
 app.use('/api', newsletterRoutes);
 app.use('/api', messageRoutes);
+app.use('/api', expenseRoutes);
+app.use('/api', financialReportRoutes);
+app.use('/api', complianceRoutes);
 
 // Use error middleware
 app.use(errorMiddleware);
